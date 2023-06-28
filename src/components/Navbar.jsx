@@ -1,9 +1,20 @@
+import { UserAuth } from "../context/AuthContext";
+
 const Navbar = () => {
+  const {currentUser, logOut} = UserAuth();
+  const handleLogout = async () => {
+    try {
+      await logOut();
+    }catch(error){
+      console.log(error)
+    }
+  }
+  
   return (
     <div className= "navbar bg-primary text-primary-content">
     <div className="containerWrap flex justify-between ">
       <a className="btn btn-ghost normal-case text-xl">RealTime ChatApp</a>
-      <button> Logout</button>
+      {currentUser ? <button onClick={handleLogout}> Logout</button> : ""}
     </div>
     </div>
   );

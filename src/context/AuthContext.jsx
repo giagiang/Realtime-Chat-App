@@ -13,8 +13,7 @@ const AuthContext = createContext();
 //provider Context
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading , setLoading] = useState(null)
-   console.log(currentUser);
+  const [loading, setLoading] = useState(null);
   // login by google
   const loginWithGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -23,26 +22,28 @@ export const AuthProvider = ({ children }) => {
 
   //signout
   const logout = () => signOut(auth);
-
   const value = {
     currentUser,
     setCurrentUser,
     loginWithGoogle,
     logout
   }
-  console.log(currentUser);
 
   //setcurrentUser
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      setLoading(false)
+      setLoading(false);
     });
     return unsubscribe;
   }, []);
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
-}
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
 export const UserAuth = () => {
   return useContext(AuthContext);
 };

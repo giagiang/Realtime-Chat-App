@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const Login = () => {
   const navigate = useNavigate();
   const {currentUser, loginWithGoogle} = UserAuth();
-  console.log(currentUser)
+  console.log(currentUser);
   const handlerLogin  = async () =>  {
     try {
         await loginWithGoogle();
@@ -16,7 +16,8 @@ const Login = () => {
   useEffect(()=> {
     if(currentUser){
     navigate("/chat")
-    }
+    };
+    console.log(currentUser);
   },[currentUser]);
   return (
     <div className="hero min-h-screen bg-base-200">

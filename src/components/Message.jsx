@@ -1,4 +1,5 @@
 const Message = ({ message }) => {
+  console.log(Message)
   return (
     <div>
       <div className="chat chat-start">
@@ -8,7 +9,7 @@ const Message = ({ message }) => {
           </div>
         </div>
         <div className="chat-header">
-        {message.name} 
+        {message.displayName} 
         </div>
         <div className="chat-bubble">{message.text}</div>
         <div className="chat-footer opacity-50">Delivered</div>

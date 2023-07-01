@@ -3,7 +3,7 @@ import { UserAuth } from "../context/AuthContext";
 const Navbar = () => {
   const { currentUser, logout } = UserAuth();
   const handleLogout = async () => {
-    try {
+    try { 
       await logout();
     } catch (error) {
       console.log(error);
